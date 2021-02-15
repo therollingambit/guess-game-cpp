@@ -7,10 +7,11 @@ using std::cout;
 using std::cin;
 
 void play_game(){
-    int random = rand() % 251;
+    int random = rand() % 21;
     cout << random << std::endl;
-    cout << "Guess a number between 1 and 250: \n";
-    while (true){
+    cout << "Guess a number between 1 and 20: \n";
+    int tries = 3;
+    for (int i = 0; i < 3; i++){
         int guess;
         cin >> guess;
         if (guess == random) {
@@ -21,7 +22,15 @@ void play_game(){
             cout << "number too low. Try again.\n";
         else 
             cout << "number too high. Try again.\n";
+        tries--;
+        if (tries == 1){
+            cout << "you have " << tries << " try left.\n";
+            continue;
+        }
+        cout << "you have " << tries << " tries left.\n";
+        continue;
     }
+    cout << "Game Over.\n";
 }
 
 int main(){
